@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Member extends BaseEntity {
+public class member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,10 +38,18 @@ public class Member extends BaseEntity {
     private SocialType socialType;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFALUT 'ACTIVE'")
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private MemberStatus status;
 
     private LocalDate inactiveDate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "alarm_id")
+    private alarm alarm;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "favor_id")
+    private favor favor;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Mission> memberMissionList = new ArrayList<>();

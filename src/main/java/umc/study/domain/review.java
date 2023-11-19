@@ -1,14 +1,9 @@
 package umc.study.domain;
 
 import lombok.*;
-import org.apache.catalina.Store;
 import umc.study.domain.common.BaseEntity;
-import umc.study.domain.enums.Gender;
-import umc.study.domain.enums.MemberStatus;
-import umc.study.domain.enums.SocialType;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -31,11 +26,11 @@ public class review extends BaseEntity {
     private String reply;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberId")
-    private Member member;
+    @JoinColumn(name = "member_id")
+    private umc.study.domain.member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "storeId")
+    @JoinColumn(name = "store_id")
     private store store;
 
 }

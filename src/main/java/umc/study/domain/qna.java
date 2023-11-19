@@ -2,12 +2,8 @@ package umc.study.domain;
 
 import lombok.*;
 import umc.study.domain.common.BaseEntity;
-import umc.study.domain.enums.Gender;
-import umc.study.domain.enums.MemberStatus;
-import umc.study.domain.enums.SocialType;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -31,6 +27,6 @@ public class qna extends BaseEntity {
     private String photo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberId")
-    private Member member;
+    @JoinColumn(name = "member_id")
+    private umc.study.domain.member member;
 }
